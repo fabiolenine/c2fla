@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-module.exports = function(app,dbcrud)
+module.exports = function(app,dbcrud,parameter,base58)
 {
 
   app.get('/', function(req, res){
@@ -11,30 +11,34 @@ module.exports = function(app,dbcrud)
     var shortUrl = '';
 
     // check if url already exists in database
-    dbcrud.findOne({long_url: longUrl}, function (err, doc){
-      if (doc){
-        shortUrl = config.webhost + base58.encode(doc._id);
+    dbcrud.urllongfind(longUrl, function (err, done){
 
+      if (done){
+        shortUrl = parameter.webhost + base58.encode(done._id);
         // the document exists, so we return it without creating a new entry
-        res.send({'shortUrl': shortUrl});
       } else {
         // since it doesn't exist, let's go ahead and create it:
-        var newUrl = Url({
-          long_url: longUrl
-        });
-
-        // save the new link
-        newUrl.save(function(err) {
-          if (err){
-            console.log(err);
-          }
-
-          shortUrl = config.webhost + base58.encode(newUrl._id);
-
-          res.send({'shortUrl': shortUrl});
+        dbcrud.urlshortnew(longUrl, function (err, done){
+          shortUrl = parameter.webhost + base58.encode(done._id);
         });
       }
+      res.send({'shortUrl': shortUrl});
 
+    });
+  });
+
+  app.get('/:encoded_id', function(req, res){
+    var base58Id = req.params.encoded_id;
+    var id = base58.decode(base58Id);
+    // check if url already exists in database
+    dbcrud.urlidfind(id, function(err,done){
+      if(done) {
+        res.redirect(done.long_url);
+        console.log(done.long_url);
+        // res.writeHead(301,{Location: done.long_url});
+        // res.end();
+      }
+      else res.redirect(parameter.webhost);
     });
 
   });
