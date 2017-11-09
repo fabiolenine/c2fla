@@ -18,7 +18,8 @@ const config            = require('./keys/configdb');
 
 require('./modules/dbconnection')(mongoose, config);
 
-const base58            = require('./modules/base58.js');
+const base58            = require('./modules/base58');
+const parameters        = require('./modules/parameters');
 const crud              = require('./modules/dbcrud')(mongoose);
 
 http.createServer(app).listen(3000);
@@ -32,6 +33,6 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 // Routes
-require('./routes/routec2fla.js')(app, crud);
+require('./routes/routec2fla.js')(app, crud, parameters, base58);
 
 module.exports = app;
