@@ -20,6 +20,7 @@ require('./modules/dbconnection')(mongoose, config);
 
 const base58            = require('./modules/base58');
 const parameters        = require('./modules/parameters');
+const utils             = require('./modules/commonutils');
 const crud              = require('./modules/dbcrud')(mongoose);
 
 http.createServer(app).listen(3000);
@@ -33,6 +34,6 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 // Routes
-require('./routes/routec2fla.js')(app, crud, parameters, base58);
+require('./routes/routec2fla.js')(app, crud, parameters, base58, utils);
 
 module.exports = app;
