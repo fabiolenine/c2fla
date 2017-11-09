@@ -1,3 +1,3 @@
-# Projeto: C2F.LA
+# Project: C2F.LA
 
 ## URL Shortener
