@@ -23,7 +23,7 @@ const parameters        = require('./modules/parameters');
 const utils             = require('./modules/commonutils');
 const crud              = require('./modules/dbcrud')(mongoose);
 
-http.createServer(app).listen(3000);
+http.createServer(app).listen(80);
 
 app.use(bodyParser.json());							          //for parsing application/json
 app.use(bodyParser.urlencoded({extended: true}));	// for parsing application/x-www-form-urlencoded

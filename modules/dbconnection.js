@@ -2,8 +2,8 @@
 
 module.exports = function(mongoose, config){
 
-  const dbPath    = "mongodb://" +   //config.USER     + ":" +
-                                     //config.PASS     + "@"+
+  const dbPath    = "mongodb://" +   config.USER     + ":" +
+                                     config.PASS     + "@"+
                                      config.HOST     + ":"+
                                      config.PORT     + "/"+
                                      config.DATABASE;
@@ -16,16 +16,5 @@ module.exports = function(mongoose, config){
                     return mongoose.connection;},
     err => {console.log(`Database connection error: ${err.message}`);}
   );
-
-  // if ( !(db) ) console.log('Unable to connect to mongoDB');
-  // else console.log('Connected to mongoDB');
-
-  // connection failed event handler
-  // mongoose.connection.on('error: ', function(err){console.log('Database connection error: '+err);}); // mongoose.connection.on()
-
-  // connection successful event handler:
-  // check if the db already contains a greeting. if not, create one and save it to the db
-  // mongoose.connection.once('open', function(){console.log('Database '+config.DATABASE+' is now available in '+config.HOST );});
-
 
 };
