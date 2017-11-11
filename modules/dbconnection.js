@@ -11,10 +11,11 @@ module.exports = function(mongoose, config){
   console.log('\nAttempting to connect to the mongoDB on the instance ' + config.HOST);
 
   mongoose.Promise = global.Promise;
-  const db = mongoose.connect(dbPath,{useMongoClient: true})
-      .then(() => { console.log('Connected to MongoDB');
-                    return mongoose.connection;})
-      .catch(err => {console.log(`Database connection error: ${err.message}`);});
+  const db = mongoose.connect(dbPath,{useMongoClient: true}).then(
+    () => { console.log('Connected to MongoDB');
+                    return mongoose.connection;},
+    err => {console.log(`Database connection error: ${err.message}`);}
+  );
 
   // if ( !(db) ) console.log('Unable to connect to mongoDB');
   // else console.log('Connected to mongoDB');

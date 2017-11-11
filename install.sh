@@ -1,16 +1,17 @@
-echo "Begin install Nodejs..."
-#Install Nodejs
-sudo apt-get install nodejs
 echo "Begin install NPM..."
-#Install NPM
-sudo apt-get install npm
+sudo apt-get install -y npm
+echo "Begin install AWS-SDK..."
+sudo npm install aws-sdk
+echo "Atualizar os pacotes para a versão 6.x do Nodejs..."
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+echo "Begin install Nodejs..."
+sudo apt-get install -y nodejs
 echo "Begin install Express, Mongoose and Body-parser..."
-#Install Express, Mongoose and Body-parser
 npm install
 echo "Begin install PM2..."
-#Install PM2
 sudo npm install pm2@latest -g
 echo "Begin nodejs-legacy..."
-#Install nodejs-legacy
-sudo apt-get install nodejs-legacy
+sudo apt-get install -y nodejs-legacy
+echo "Begin build-essential..."
+sudo apt-get install -y build-essential
 echo "Game over!"
