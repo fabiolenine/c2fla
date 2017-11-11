@@ -42,11 +42,7 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `bind_Ip = 127.0.0.1` -> `#bind_Ip = 127.0.0.1`
 
-07 - Retirar os comentários das seguintes linhas:
-
-`#auth = true` -> `auth = true`
-
-08 -
+07 -
 
 `sudo service mongod restart`
 
