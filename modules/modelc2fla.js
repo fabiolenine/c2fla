@@ -8,8 +8,8 @@ var CounterSchema = mongoose.Schema({
 var counter = mongoose.model('counter', CounterSchema);
 
 // create a schema for our links
-var urlSchema = new mongoose.Schema({ _id: {type: Number, index: true},
-                                      long_url: {type: String, index:true},
+var urlSchema = new mongoose.Schema({ _id: Number,
+                                      long_url: {type: String, index:true, unique: true},
                                       created_at: Date
                                     });
 

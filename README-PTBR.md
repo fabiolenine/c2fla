@@ -54,6 +54,9 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `db.counters.insert({ _id: 'url_count', seq: 1 });`
 
+09 - Criar usuário para o serviço acessar o banco com segurança
+
+
 
 
 ### Instalação do URL Shoterner Passo a Passo
@@ -64,6 +67,10 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 * Acesso por SSH;
 * Permissão de usuário/key necessária para instalação através do apt-get e atualização;
 * Esteja na máquina pelo terminal usando SSH.
+* Lembrando de liberar a porta 80. Exemplo e documentação especifica abaixo:
+
+![Security Web Server on AWS](https://s3.us-east-2.amazonaws.com/lenines/c2fla/images/Captura+de+Tela+2017-11-11+às+18.25.05.png)
+[Web Server on AWS](http://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/security-group-rules-reference.html)
 
 **Passos:**
 
