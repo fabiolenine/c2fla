@@ -46,6 +46,15 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `sudo service mongod restart`
 
+08 - Acesse o MongoDB e execute os seguintes comandos:
+
+`mongo`
+
+`use c2fla`
+
+`db.counters.insert({ _id: 'url_count', seq: 1 });`
+
+
 
 ### Instalação do URL Shoterner Passo a Passo
 
