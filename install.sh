@@ -6,7 +6,7 @@ echo "Atualizar os pacotes para a versão 6.x do Nodejs..."
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 echo "Begin install Nodejs..."
 sudo apt-get install -y nodejs
-echo "Begin install Express, Mongoose and Body-parser..."
+echo "Begin install Express, Mongoose , EJS and Body-parser..."
 npm install
 echo "Begin install PM2..."
 sudo npm install pm2@latest -g
