@@ -127,15 +127,11 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `sh install.sh`
 
-06 - Responda Y, todas as vezes que perguntarem:
-
->Do you want to continue? [Y/n]
-
-07 - Informe o IP privado, usuário e senha, para a aplicação encurtador de URL acessar o MongoDB, edite o arquivo keys/configdb.js, com o seguinte comando:
+06 - Informe o IP privado, usuário e senha, para a aplicação encurtador de URL acessar o MongoDB, edite o arquivo keys/configdb.js, com o seguinte comando:
 
 `sudo vi keys/configdb.js`
 
-08 - Informe ao serviço de encurtamento de URL o domínio ou IP Publico válido, executando o comando a seguir:
+07 - Informe ao serviço de encurtamento de URL o domínio ou IP Publico válido, executando o comando a seguir:
 
 `sudo vi modules/parameters.js`
 

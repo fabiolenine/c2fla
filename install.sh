@@ -10,8 +10,6 @@ echo "Begin install Express, Mongoose , EJS and Body-parser..."
 npm install
 echo "Begin install PM2..."
 sudo npm install pm2@latest -g
-echo "Begin nodejs-legacy..."
-sudo apt-get install -y nodejs-legacy
 echo "Begin build-essential..."
 sudo apt-get install -y build-essential
 echo "Game over!"
