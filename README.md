@@ -6,7 +6,7 @@
 
 ### Installing MongoDB 3.4, step-by-step:
 
-For installation to occur smoothly, the following ** conditions ** are required:
+For installation to occur smoothly, the following **conditions** are required:
 
 * Instance AWS Ubuntu Server 14.04 LTS, running;
 * SSH access;
@@ -17,7 +17,7 @@ For installation to occur smoothly, the following ** conditions ** are required:
 ![Security Mongodb on AWS](http://docs.aws.amazon.com/quickstart/latest/mongodb/images/inbound-rules.png)
 [MongoDB on AWS](http://docs.aws.amazon.com/quickstart/latest/mongodb/security.html)
 
-** Steps: **
+**Steps:**
 
 01 - Execute the following command to import the public key used by the package management system:
 
@@ -73,7 +73,7 @@ db.createUser(
 exit
 ```
 
-** Note: Memorize the user and password informed, as you will need to inform in the installation phase of the URL shortening application. **
+**Note: Memorize the user and password informed, as you will need to inform in the installation phase of the URL shortening application.**
 
 09 - To enable all changes, restart the MongoDB service with the following command:
 
@@ -89,12 +89,12 @@ exit
 
 `@reboot sudo mongod --fork --auth --quiet --config /etc/mongod.conf`
 
-** Congratulations, we have completed the installation and configuration phase of the database. **
+**Congratulations, we have completed the installation and configuration phase of the database.**
 
 
 ### Installing the Shoterner URL Step by Step
 
-For installation to occur smoothly, the following ** conditions ** are required:
+For installation to occur smoothly, the following **conditions** are required:
 
 * Instance AWS Ubuntu Server 14.04 LTS, running;
 * SSH access;
@@ -105,7 +105,7 @@ For installation to occur smoothly, the following ** conditions ** are required:
 ![Security Web Server on AWS](https://s3.us-east-2.amazonaws.com/lenines/c2fla/images/Captura+de+Tela+2017-11-11+às+18.25.05.png)
 [Web Server on AWS](http://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/security-group-rules-reference.html)
 
-** Steps: **
+**Steps:**
 
 01 - The first command will be to update, use:
 
@@ -135,7 +135,7 @@ For installation to occur smoothly, the following ** conditions ** are required:
 
 `sudo vi modules/parameters.js`
 
-** Congratulations, we have completed the installation and configuration phase of the WebService URL shortener. **
+**Congratulations, we have completed the installation and configuration phase of the WebService URL shortener.**
 
 
 ### Starting the URL Shortener WebService
@@ -148,4 +148,4 @@ To monitor use the command below:
 
 `sudo pm2 monit`
 
-** Congratulations, we have finished the WebService startup phase and good luck !!! **
+**Congratulations, we have finished the WebService startup phase and good luck !!!**
