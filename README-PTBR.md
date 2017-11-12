@@ -1,8 +1,8 @@
-# Projecto: C2F.LA
+# Projeto: C2F.LA
 
 ## Encurtador de URL
 
-### Instalação do MongoDB passo a passo:
+### Instalação do MongoDB 3.4, passo a passo:
 
 Para que a instalação ocorra sem problemas, são necessários as seguintes **condições**:
 
@@ -42,11 +42,7 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `bind_Ip = 127.0.0.1` -> `#bind_Ip = 127.0.0.1`
 
-07 -
-
-`sudo service mongod restart`
-
-08 - Acesse o MongoDB e execute os seguintes comandos:
+07 - Acesse o MongoDB e execute os seguintes comandos:
 
 `mongo`
 
@@ -54,9 +50,41 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 `db.counters.insert({ _id: 'url_count', seq: 1 });`
 
-09 - Criar usuário para o serviço acessar o banco com segurança
+08 - Criar usuário para o serviço acessar o banco com segurança e do super usuário administrador:
+
+```
+use admin
+
+db.createUser({user: "ENTER THE NAME OF ADMIN HERE", pwd: "ENTER THE ADMIN PASSWORD HERE", roles:["root"]})
+
+db.auth("ENTER THE NAME OF ADMIN HERE", "ENTER THE ADMIN PASSWORD HERE")
+
+use c2fla
+
+db.createUser(
+   {
+     user: "ENTER THE USERNAME OF THE SHORTENER URL",
+     pwd: "ENTER THE SHORTENER URL USER PASSWORD HERE",
+     roles: [ {role: "readWrite", db: "c2fla"} , { role: "read", db: "admin" }]
+   }
+)
+```
+**Observação: memorize o usuário e senha informado, pois precisará informar na fase de instalação da aplicação de encurtamento de URL.**
 
 
+09 - Para ativar todas as alterações reinicie o serviço do MongoDB com o comando a seguir:
+
+`sudo service mongod stop`
+
+`sudo mongod --fork --auth --quiet --config /etc/mongod.conf`
+
+10 - Vamos editar o crontab para que o MongoDB retorne caso a instância seja reiniciada, execute o comendo abaixo:
+
+`Sudo crontab –e`
+
+ 10.1 - Adicione esta linha ao arquivo:
+
+`@reboot sudo mongod --fork --auth --quiet --config /etc/mongod.conf`
 
 
 ### Instalação do URL Shoterner Passo a Passo
@@ -98,4 +126,6 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 >Do you want to continue? [Y/n]
 
-07 -
+07 - Informe o IP privado, usuário e senha, para a aplicação encurtador de URL acessar o MongoDB, edite o arquivo keys/configdb.js, com o seguinte comando:
+
+`sudo vi keys/configdb.js`
