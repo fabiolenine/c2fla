@@ -117,7 +117,7 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 
 03 - Baixo o projeto fazendo um clone do repositório com o seguinte comando:   
 
- `git clone https://github.com/fabiolenine/c2fla.git`
+`git clone <LINK URL REPORSITORY github>`
 
 04 - Acessa a pasta com o seguinte comando:
 
