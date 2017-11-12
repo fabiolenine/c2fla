@@ -68,7 +68,10 @@ db.createUser(
      roles: [ {role: "readWrite", db: "c2fla"} , { role: "read", db: "admin" }]
    }
 )
+
+exit
 ```
+
 **Observação: memorize o usuário e senha informado, pois precisará informar na fase de instalação da aplicação de encurtamento de URL.**
 
 
@@ -80,11 +83,13 @@ db.createUser(
 
 10 - Vamos editar o crontab para que o MongoDB retorne caso a instância seja reiniciada, execute o comendo abaixo:
 
-`Sudo crontab –e`
+`sudo crontab -e`
 
  10.1 - Adicione esta linha ao arquivo:
 
 `@reboot sudo mongod --fork --auth --quiet --config /etc/mongod.conf`
+
+**Parabéns, finalizamos a fase de instalação e configuração do banco de dados.**
 
 
 ### Instalação do URL Shoterner Passo a Passo
@@ -129,3 +134,22 @@ Para que a instalação ocorra sem problemas, são necessários as seguintes **c
 07 - Informe o IP privado, usuário e senha, para a aplicação encurtador de URL acessar o MongoDB, edite o arquivo keys/configdb.js, com o seguinte comando:
 
 `sudo vi keys/configdb.js`
+
+08 - Informe ao serviço de encurtamento de URL o domínio ou IP Publico válido, executando o comando a seguir:
+
+`sudo vi modules/parameters.js`
+
+**Parabéns, finalizamos a fase de instalação e configuração do WebService encurtador de URL.**
+
+
+### Iniciar o WebService encurtador de URL
+
+Para executar a aplicação WebService há apenas um passo, execute o comando abaixo:
+
+`sh start.sh`
+
+Para monitorar utilize o comando abaixo:
+
+`sudo pm2 monit`
+
+**Parabéns, finalizamos a fase de inicialização do WebService e boa sorte!!!**
