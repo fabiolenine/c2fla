@@ -2,6 +2,25 @@
 
 ## Encurtador de URL
 
+Os endpoints são:
+
+**GET /**
+
+Retorna o site principal para interação através do browser.
+
+**POST /api/shorten**
+
+Submete uma url longa para gerar ou retornar uma url encurtada.
+
+**GET /:encoded_id**
+
+ou
+
+**GET /urls/:encoded_id**
+
+Redireciona a url encurtada para a url longa equivalente que foi registrada.
+
+
 ### Instalação do MongoDB 3.4, passo a passo:
 
 Para que a instalação ocorra sem problemas, são necessários as seguintes **condições**:

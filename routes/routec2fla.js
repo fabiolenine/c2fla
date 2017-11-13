@@ -31,7 +31,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 
   });
 
-  app.get('/:encoded_id', function(req, res){
+  app.get(['/:encoded_id','/urls/:encoded_id'], function(req, res){
     var base58Id = req.params.encoded_id;
     var id = base58.decode(base58Id);
     // check if url already exists in database
