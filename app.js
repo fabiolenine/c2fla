@@ -33,6 +33,8 @@ app.use(express.static('public/'));
 app.set('view engine','ejs');
 app.set('views','views');
 
+app.disable('x-powered-by');
+
 // Routes
 require('./routes/routec2fla.js')(app, crud, parameters, base58, utils);
 
