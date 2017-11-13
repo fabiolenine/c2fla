@@ -75,8 +75,8 @@ module.exports = function(mongoose)
             if(done){
               console.log(done);
               let doneJson = {
-                'hits': done.hits,
-                'urlCount': done.urlCount,
+                'hits': done[0].hits,
+                'urlCount': done[0].urlCount,
                 'topUrls': result
               };
 
