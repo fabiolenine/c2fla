@@ -6,7 +6,7 @@ module.exports = function(mongoose)
   const User  = require('./modelusers');
 
   let urllongfind = function(urllong, callback){
-    Url.model.findOne({url: urllong}, function(err,result){
+    Url.model.findOneAndUpdate({url: urllong},{$inc:{hits: 1}}, function(err,result){
       if(!err) callback(null, result);
       else callback(err, null);
     });
