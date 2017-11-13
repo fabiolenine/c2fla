@@ -36,8 +36,8 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var id = base58.decode(base58Id);
     // check if url already exists in database
     dbcrud.urlidfind(id, function(err,done){
-      if(done) res.redirect(done.url);
-      else res.redirect(parameter.webhost);
+      if(done) res.redirect(301,done.url);
+      else res.status(404);
     });
 
   });
