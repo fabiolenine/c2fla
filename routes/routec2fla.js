@@ -46,7 +46,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var user = req.body.id;
 
     dbcrud.userfind(user, function(err, done){
-      if (done) res.status(409).send('usuário já existe.');
+      if (done) res.status(409).send({'id': done.name});
       else {
         dbcrud.usersave(user,function (err, done){
             if(done) res.status(201).send({'id': done.name});
