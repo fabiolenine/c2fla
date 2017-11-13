@@ -31,7 +31,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
   //
   // });
 
-  app.get(['/:encoded_id','/urls/:encoded_id'], function(req, res){
+  app.get('/urls/:encoded_id', function(req, res){
     var base58Id = req.params.encoded_id;
     var id = base58.decode(base58Id);
     // check if url already exists in database
@@ -83,7 +83,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
       dbcrud.urllongfind(longUrl, function (err, done){
         if (done){
           shortUrl = parameter.webhost + base58.encode(done._id);
-          res.status.send({ 'id': done._id, // ID da url
+          res.status(200).send({ 'id': done._id, // ID da url
                             'hits': done.hits, // Quantidade de hits nela
                             'url': done.url, // A url original
                             'shortUrl': done.shortUrl // A url curta formada
