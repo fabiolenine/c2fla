@@ -108,8 +108,9 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
   });
 
   app.get('/stats', function(req, res){
-    dbcrud.urlstats(function(result){
-      res.json(result);
+    dbcrud.urlstats(function(err, result){
+      if (err) res.status(409).send('error:',err);
+      else res.json(result);
     });
   });
 
