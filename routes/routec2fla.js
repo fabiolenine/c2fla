@@ -48,7 +48,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var user = req.body.id;
 
     dbcrud.userfind(user, function(err, done){
-      if (done) res.status(409).send({'id': done.name});
+      if (done) res.status(404).send({'id': done.name});
       else {
         dbcrud.usersave(user,function (err, done){
             if(done) res.status(201).send({'id': done.name});
@@ -109,7 +109,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 
   app.get('/stats', function(req, res){
     dbcrud.urlstats(function(err, done){
-      if (err) res.status(409).send('error:',err);
+      if (err) res.status(404).send('error:',err);
       else res.json(done);
     });
   });
@@ -118,7 +118,15 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var base58Id = req.params.encoded_id;
     var id = base58.decode(base58Id);
     dbcrud.urlstatsid(id, function(err, done){
-      if (err) res.status(409).send('Not Found');
+      if (err) res.status(404).send('Not Found');
+      else res.json(done);
+    });
+  });
+
+  app.get('/users/:userId/stats', function(req, res){
+    var user = req.params.userid;
+    dbcrud.usersstats(user, function(err, done){
+      if (err) res.status(404).send('error:',err);
       else res.json(done);
     });
   });
