@@ -5,24 +5,6 @@
 [Portuguese version](https://github.com/fabiolenine/c2fla/blob/master/README-PTBR.md)
 
 
-The endpoints are:
-
-**GET /**
-
-Returns the primary site for interaction through the browser.
-
-**POST /api/shorten**
-
-Submit a long url to generate or return a shortened url.
-
-**GET /:encoded_id**
-
-or
-
-**GET /urls/:encoded_id**
-
-Redirects the shortened url to the equivalent long url that has been registered.
-
 
 ### Installing MongoDB 3.4, step-by-step:
 
