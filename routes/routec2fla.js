@@ -7,7 +7,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 	});
 
   app.post('/api/shorten', function(req, res){
-    var longUrl = req.body.url;
+    var longUrl = utils.containshttp(req.body.url);
     var shortUrl = '';
 
     if(utils.isvalidurl(longUrl)){
