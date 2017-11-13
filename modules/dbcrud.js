@@ -73,7 +73,6 @@ module.exports = function(mongoose)
            }},
           {$project:{_id:0,hits:1,urlCount:1}}],function(err, done){
             if(done){
-              console.log(done);
               let doneJson = {
                 'hits': done[0].hits,
                 'urlCount': done[0].urlCount,
