@@ -108,9 +108,18 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
   });
 
   app.get('/stats', function(req, res){
-    dbcrud.urlstats(function(err, result){
+    dbcrud.urlstats(function(err, done){
       if (err) res.status(409).send('error:',err);
-      else res.json(result);
+      else res.json(done);
+    });
+  });
+
+  app.get('/stats/:encoded_id', function(req, res){
+    var base58Id = req.params.encoded_id;
+    var id = base58.decode(base58Id);
+    dbcrud.urlstatsid(id, function(err, done){
+      if (err) res.status(409).send('Not Found');
+      else res.json(done);
     });
   });
 

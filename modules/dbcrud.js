@@ -86,6 +86,13 @@ module.exports = function(mongoose)
     });
   };
 
+  let urlstatsid = function(id, callback){
+    Url.model.findOne({id: id},{_id:0, id: 1, hits: 1, url: 1, shortUrl: 1}).exec(function(err, result) {
+      if (err) callback(err,null);
+      else callback(null, result);
+    });
+  };
+
   let regress = {
                   "urllongfind"    : urllongfind,
                   "urlshortnew"    : urlshortnew,
@@ -94,7 +101,8 @@ module.exports = function(mongoose)
                   "usersave"       : usersave,
                   "userfind"       : userfind,
                   "userdelete"     : userdelete,
-                  "urlstats"       : urlstats
+                  "urlstats"       : urlstats,
+                  "urlstatsid"     : urlstatsid
                 };
 
   return regress;
