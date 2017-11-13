@@ -25,7 +25,7 @@ module.exports = function(mongoose)
   };
 
   let urlidfind = function(id, callback){
-    Url.model.findOneAndUpdate({_id: id}, { $inc: {hits: 1}}).exec(function(err,result){
+    Url.model.findOneAndUpdate({id: id}, { $inc: {hits: 1}}).exec(function(err,result){
       if(result) callback(null,result);
       else callback(err,null);
     });
@@ -56,14 +56,14 @@ module.exports = function(mongoose)
   };
 
   let urldelete = function(id, callback){
-    Url.model.remove({_id: id},function(err, result){
+    Url.model.remove({id: id},function(err, result){
       if(err) callback(handleErros(err),null);
       callback(null, result);
     });
   };
 
   let urlstats = function(callback){
-    Url.model.find({},{_id: 1, hits: 1, url: 1, shortUrl: 1}).sort({'hits': -1}).limit(10).exec(function(err, result) {
+    Url.model.find({},{id: 1, hits: 1, url: 1, shortUrl: 1}).sort({'hits': -1}).limit(10).exec(function(err, result) {
       if (err) callback(err,null);
       else {
         Url.model.aggregate([{$group: {

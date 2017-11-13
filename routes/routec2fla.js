@@ -84,8 +84,8 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
       // check if url already exists in database
       dbcrud.urllongfind(longUrl, function (err, done){
         if (done){
-          shortUrl = parameter.webhost + base58.encode(done._id);
-          res.status(200).send({ 'id': done._id, // ID da url
+          // shortUrl = parameter.webhost + base58.encode(done.id);
+          res.status(200).send({ 'id': done.id, // ID da url
                             'hits': done.hits, // Quantidade de hits nela
                             'url': done.url, // A url original
                             'shortUrl': done.shortUrl // A url curta formada
@@ -95,7 +95,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
           // since it doesn't exist, let's go ahead and create it:
           dbcrud.urlshortnew(longUrl, user, function (err, done){
             // shortUrl = parameter.webhost + base58.encode(done._id);
-            res.status(201).send({ 'id': done._id, // ID da url
+            res.status(201).send({ 'id': done.id, // ID da url
                               'hits': done.hits, // Quantidade de hits nela
                               'url': done.url, // A url original
                               'shortUrl': done.shortUrl // A url curta formada
