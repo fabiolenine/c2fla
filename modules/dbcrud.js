@@ -49,8 +49,8 @@ module.exports = function(mongoose)
 
   let userdelete = function(user, callback){
     User.model.remove({name: user},function(err){
-      if(err) callback(handleErros(err));
-      callback('Removed');
+      if(err) callback(handleErros(err),null);
+      callback(null,'Removed');
     });
   };
 
