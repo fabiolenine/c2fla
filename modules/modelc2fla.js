@@ -1,6 +1,6 @@
 var mongoose  = require('mongoose');
-var base58    = require('base58');
-var parameter = require('parameters');
+var base58    = require('./base58');
+var parameter = require('./parameters');
 
 var CounterSchema = mongoose.Schema({
     _id: {type: String, required: true},
