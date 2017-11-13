@@ -96,7 +96,7 @@ module.exports = function(mongoose)
   let usersstats = function(user, callback){
     Url.model.find({username: user},{_id:0, id: 1, hits: 1, url: 1, shortUrl: 1}).sort({'hits': -1}).limit(10).exec(function(err, result) {
       if (err) callback(err,null);
-      else {
+      else if(result){
         Url.model.aggregate([{$match:{username: user}},
           {$group: {
             _id: null,
@@ -114,7 +114,7 @@ module.exports = function(mongoose)
               callback(null, doneJson);
             } else callback(err, null);
           });
-      }
+      } else callback('User not Found...', null);
     });
   };
 
