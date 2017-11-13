@@ -46,17 +46,17 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var user = req.body.id;
 
     dbcrud.userfind(user, function(err, done){
-      if (done) res.send({'id': done.name},409);
+      if (done) res.status(409).send({'id': done.name});
       else {
         dbcrud.usersave(user,function (err, done){
-            if(done) res.send({'id': done.name},201);
+            if(done) res.status(201).send({'id': done.name});
             else res.send('Error trying to save');
         });
       }
     });
   });
 
-  app.delete('/user/:userId', function(err, res){
+  app.delete('/user/:userId', function(req, res){
     var user = req.params.userId;
     dbcrud.userdelete(user,function(err, done){
       if (done) res.send('');
