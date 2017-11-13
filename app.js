@@ -36,6 +36,6 @@ app.set('views','views');
 app.disable('x-powered-by');
 
 // Routes
-require('./routes/routec2fla.js')(app, crud, parameters, base58, utils);
+require('./routes/routec2fla.js')(app, crud, base58, utils);
 
 module.exports = app;

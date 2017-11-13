@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-module.exports = function(app,dbcrud,parameter,base58,utils)
+module.exports = function(app,dbcrud,base58,utils)
 {
 
   // app.get('/', function(req, res){
@@ -33,7 +33,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 
   app.get('/urls/:encoded_id', function(req, res){
     var base58Id = req.params.encoded_id;
-    var id = base58.decode(base58Id);
+    var id = base58.decode(base58Id).toString();
     // check if url already exists in database
     dbcrud.urlidfind(id, function(err,done){
       if(done) { //res.redirect(301,done.url);
@@ -68,7 +68,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 
   app.delete('/urls/:encoded_id', function(req, res){
     var base58Id = req.params.encoded_id;
-    var id = base58.decode(base58Id);
+    var id = base58.decode(base58Id).toString();
     dbcrud.urldelete(id,function(err, done){
       if (done) res.send('');
       else res.send('Error');
@@ -84,7 +84,6 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
       // check if url already exists in database
       dbcrud.urllongfind(longUrl, function (err, done){
         if (done){
-          // shortUrl = parameter.webhost + base58.encode(done.id);
           res.status(200).send({ 'id': done.id, // ID da url
                             'hits': done.hits, // Quantidade de hits nela
                             'url': done.url, // A url original
@@ -94,7 +93,6 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
         } else {
           // since it doesn't exist, let's go ahead and create it:
           dbcrud.urlshortnew(longUrl, user, function (err, done){
-            // shortUrl = parameter.webhost + base58.encode(done._id);
             res.status(201).send({ 'id': done.id, // ID da url
                               'hits': done.hits, // Quantidade de hits nela
                               'url': done.url, // A url original
@@ -116,7 +114,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
 
   app.get('/stats/:encoded_id', function(req, res){
     var base58Id = req.params.encoded_id;
-    var id = base58.decode(base58Id);
+    var id = base58.decode(base58Id).toString();
     dbcrud.urlstatsid(id, function(err, done){
       if (err) res.status(404).send('Not Found');
       else res.json(done);

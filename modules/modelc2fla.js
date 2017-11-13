@@ -10,7 +10,7 @@ var CounterSchema = mongoose.Schema({
 var counter = mongoose.model('counter', CounterSchema);
 
 // create a schema for our links
-var urlSchema = new mongoose.Schema({ id: {type:Number, index:true, unique:true},
+var urlSchema = new mongoose.Schema({ id: {type:String, index:true, unique:true},
                                       url: {type: String, index:true, unique: true},
                                       created_at: Date,
                                       hits: {type: Number, default: 0},
@@ -23,7 +23,7 @@ urlSchema.pre('save', function(next){ var doc = this;
                                           if (error)
                                               return next(error);
                                           doc.created_at = new Date();
-                                          doc.id = counter.seq;
+                                          doc.id = counter.seq.toString();
                                           doc.shortUrl = parameter.webhost + base58.encode(counter.seq);
                                           next();
                                       });
