@@ -60,7 +60,16 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     var user = req.params.userId;
     dbcrud.userdelete(user,function(err, done){
       if (done) res.send('');
-      else res.send(err);
+      else res.send('Error');
+    });
+  });
+
+  app.delete('/urls/:encoded_id', function(req, res){
+    var base58Id = req.params.encoded_id;
+    var id = base58.decode(base58Id);
+    dbcrud.urldelete(id,function(err, done){
+      if (done) res.send('');
+      else res.send('Error');
     });
   });
 

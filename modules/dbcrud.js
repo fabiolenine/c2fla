@@ -48,9 +48,16 @@ module.exports = function(mongoose)
   };
 
   let userdelete = function(user, callback){
-    User.model.remove({name: user},function(err){
+    User.model.remove({name: user},function(err, result){
       if(err) callback(handleErros(err),null);
-      callback(null,'Removed');
+      callback(null, result);
+    });
+  };
+
+  let urldelete = function(id, callback){
+    Url.model.remove({_id: id},function(err, result){
+      if(err) callback(handleErros(err),null);
+      callback(null, result);
     });
   };
 
@@ -58,6 +65,7 @@ module.exports = function(mongoose)
                   "urllongfind"    : urllongfind,
                   "urlshortnew"    : urlshortnew,
                   "urlidfind"      : urlidfind,
+                  "urldelete"      : urldelete,
                   "usersave"       : usersave,
                   "userfind"       : userfind,
                   "userdelete"     : userdelete
