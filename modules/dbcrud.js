@@ -63,7 +63,7 @@ module.exports = function(mongoose)
   };
 
   let urlstats = function(callback){
-    Url.model.find({},{id: 1, hits: 1, url: 1, shortUrl: 1}).sort({'hits': -1}).limit(10).exec(function(err, result) {
+    Url.model.find({},{_id:0, id: 1, hits: 1, url: 1, shortUrl: 1}).sort({'hits': -1}).limit(10).exec(function(err, result) {
       if (err) callback(err,null);
       else {
         Url.model.aggregate([{$group: {
