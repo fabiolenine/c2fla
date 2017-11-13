@@ -124,7 +124,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
   });
 
   app.get('/users/:userId/stats', function(req, res){
-    var user = req.params.userid;
+    var user = req.params.userId;
     dbcrud.usersstats(user, function(err, done){
       if (err) res.status(404).send('error:',err);
       else res.json(done);
