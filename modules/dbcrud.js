@@ -6,15 +6,16 @@ module.exports = function(mongoose)
   const User  = require('./modelusers');
 
   let urllongfind = function(urllong, callback){
-    Url.model.findOne({long_url: urllong}, function(err,result){
+    Url.model.findOne({url: urllong}, function(err,result){
       if(!err) callback(null, result);
       else callback(err, null);
     });
   };
 
-  let urlshortnew = function(urllong, callback){
+  let urlshortnew = function(urllong, userid, callback){
     let newUrl = new Url.model({
-                   long_url: urllong
+                   url: urllong,
+                   username: userid
                  });
     // save the new link
     newUrl.save(function(err,result) {
