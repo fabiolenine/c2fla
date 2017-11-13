@@ -107,4 +107,10 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
     else res.send({'shortUrl': 'Invalid URL format. Input URL must comply to the following: http(s)://(www.)domain.ext(/)(path)'});
   });
 
+  app.get('/stats', function(req, res){
+    dbcrud.urlstats(function(result){
+      res.json(result);
+    });
+  });
+
 };
