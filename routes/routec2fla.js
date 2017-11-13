@@ -49,7 +49,7 @@ module.exports = function(app,dbcrud,parameter,base58,utils)
       if (done) res.status(409).send('usuário já existe.');
       else {
         dbcrud.usersave(user,function (err, done){
-            if(done) res.status(201).json(done);
+            if(done) res.status(201).send({'id': done.name});
             else res.send('Error trying to save');
         });
       }

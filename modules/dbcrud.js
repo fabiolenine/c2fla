@@ -32,7 +32,7 @@ module.exports = function(mongoose)
 
   let usersave = function(user, callback){
     let newUser = new User.model({
-      id: user
+      name: user
     });
     newUser.save(function(err, result){
       if(!err) callback(null, result);
@@ -41,14 +41,14 @@ module.exports = function(mongoose)
   };
 
   let userfind = function(user, callback){
-    User.model.findOne({id: user}, function(err, result){
+    User.model.findOne({name: user}, function(err, result){
       if(result) callback(null,result);
       else callback(err,null);
     });
   };
 
   let userdelete = function(user, callback){
-    User.model.remove({id: user},function(err){
+    User.model.remove({name: user},function(err){
       if(err) callback(handleErros(err));
       callback('Removed');
     });
