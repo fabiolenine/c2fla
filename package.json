@@ -1,10 +1,11 @@
 {
   "name": "c2fla",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A URL shortener",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set NODE_ENV=dev && node app.js",
+    "test": "mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,10 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongoose": "^4.13.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.1.0"
   }
 }
